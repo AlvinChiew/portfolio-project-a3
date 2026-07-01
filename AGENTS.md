@@ -14,3 +14,4 @@ This page includes sections below:
 ## TODOs
 
 - Replace alvinchiew.com and personal links to project a3
+- Add activation code backend link
