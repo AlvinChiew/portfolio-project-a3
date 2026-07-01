@@ -10,3 +10,7 @@ This page includes sections below:
 - Entire Contact section from Alvin Chiew Portfolio
   - Email section for business inquiry which consists of Your email, Subject, Message
   - Contacts & channel links
+
+## TODOs
+
+- Replace alvinchiew.com and personal links to project a3

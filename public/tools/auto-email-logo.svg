@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Auto Email">
+  <defs>
+    <linearGradient id="auto-email-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#061931"/>
+    </linearGradient>
+    <filter id="logo-shadow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="glyph-shadow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <g filter="url(#logo-shadow)">
+    <rect width="128" height="128" rx="24" fill="url(#auto-email-bg)"/>
+    <g filter="url(#glyph-shadow)">
+      <path
+        fill="#ffffff"
+        d="M 18 46 L 40 62 L 62 46 L 62 74 C 62 77.3 59.3 80 56 80 L 24 80 C 20.7 80 18 77.3 18 74 Z"
+      />
+      <path
+        d="M 66 34 A 38 38 0 0 1 104 64 A 38 38 0 0 1 66 94"
+        fill="none"
+        stroke="#61e692"
+        stroke-width="3"
+        stroke-dasharray="6 5"
+        stroke-linecap="round"
+      />
+      <circle cx="66" cy="34" r="5.5" fill="none" stroke="#61e692" stroke-width="3"/>
+      <circle cx="104" cy="64" r="5.5" fill="none" stroke="#61e692" stroke-width="3"/>
+      <circle cx="66" cy="94" r="5.5" fill="none" stroke="#61e692" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
