@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import GetActivationCodeButton from "../components/GetActivationCodeButton";
+import Image from 'next/image';
+import Link from 'next/link';
+import GetActivationCodeButton from '../components/GetActivationCodeButton';
 
 const IntroSection = () => {
   return (
@@ -18,8 +18,9 @@ const IntroSection = () => {
             🚀 Showcase FRI · 🔨 Build TUES
           </p>
           <p className="mb-6 text-justify text-secondaryText">
-            Project A3 builds a series of small, simple AI and automation
-            utility tools that solve one business problem at a time.
+            Project A3 builds and showcases a series of{' '}
+            <b>FREE AI and automation tools</b> that solves one business problem
+            at a time.
           </p>
           <ul className="mb-8 list-inside list-disc space-y-2 text-secondaryText">
             <li>Simple, minimal, and friendly for non-technical users</li>

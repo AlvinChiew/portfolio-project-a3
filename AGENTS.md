@@ -15,3 +15,8 @@ This page includes sections below:
 
 - Replace alvinchiew.com and personal links to project a3
 - Add activation code backend link
+- Sign Up Form
+  - Job Role
+  - Company Size
+  - How did you know us?
+-
