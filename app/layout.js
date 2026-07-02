@@ -1,12 +1,12 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Project A3 | A3计划 | 大艾与AI",
+  title: 'Project A3 | A3计划',
   description:
-    "Alvin • AI • Automation — Made Simple, For Business. Free desktop tools for small business.",
+    'Alvin • AI • Automation — Made Simple, For Business. Free desktop tools for small business.',
 };
 
 export default function RootLayout({ children }) {

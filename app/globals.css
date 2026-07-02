@@ -63,3 +63,101 @@ body {
 .hover\:animate-ping-custom:hover {
   animation: animate-ping-custom 1s infinite;
 }
+
+/* Google Translate — hide injected toolbar and keep page layout stable */
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+html.translated-ltr,
+html.translated-rtl {
+  margin-top: 0 !important;
+}
+
+.google-translate-wrapper .goog-te-gadget {
+  color: transparent !important;
+  font-family: inherit !important;
+  font-size: 0 !important;
+}
+
+.google-translate-wrapper .goog-te-gadget .goog-te-combo {
+  margin: 0 !important;
+  padding: 0.25rem 1.25rem 0.25rem 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #adb7be !important;
+  font-family: inherit !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+
+.google-translate-wrapper:hover .goog-te-gadget .goog-te-combo,
+.google-translate-wrapper .goog-te-gadget .goog-te-combo:hover,
+.google-translate-wrapper .goog-te-gadget .goog-te-combo:focus {
+  color: #ffffff !important;
+}
+
+.google-translate-wrapper .goog-te-gadget img {
+  display: none !important;
+}
+
+.google-translate-wrapper .goog-te-gadget .goog-logo-link,
+.google-translate-wrapper .goog-te-gadget .goog-te-gadget-icon {
+  display: none !important;
+}
+
+.google-translate-wrapper #google_translate_element {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.google-translate-wrapper .goog-te-gadget {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+}
+
+.google-translate-wrapper .goog-te-gadget .goog-te-combo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0;
+  padding: 0 !important;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.google-translate-wrapper .goog-te-gadget .goog-te-combo option {
+  color: #121212;
+  background: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .google-translate-wrapper {
+    position: relative;
+    z-index: 1;
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+}

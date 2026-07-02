@@ -1,11 +1,12 @@
-import Link from 'next/link';
-import GetActivationCodeButton from '../components/GetActivationCodeButton';
+import Image from "next/image";
+import Link from "next/link";
+import GetActivationCodeButton from "../components/GetActivationCodeButton";
 
 const IntroSection = () => {
   return (
-    <section id="about" className="pt-24 lg:pt-28">
-      <div className="py-16 md:py-20">
-        <div>
+    <section id="about" className="pt-24 lg:pt-40">
+      <div className="grid grid-cols-1 sm:grid-cols-12">
+        <div className="col-span-7 place-self-center justify-self-start text-center sm:text-left">
           <h1 className="mb-2 text-4xl font-bold text-white md:text-5xl">
             Project A3
           </h1>
@@ -42,6 +43,18 @@ const IntroSection = () => {
             >
               Bugs & feature requests
             </Link>
+          </div>
+        </div>
+        <div className="col-span-5 my-6 place-self-center sm:place-self-start md:place-self-center lg:my-0">
+          <div className="relative flex h-[250px] w-[250px] items-center justify-center overflow-hidden rounded-full bg-secondaryBackdrop lg:h-[400px] lg:w-[400px]">
+            <Image
+              src="/images/hero.png"
+              alt="Project A3 hero"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 250px, 400px"
+              priority
+            />
           </div>
         </div>
       </div>
