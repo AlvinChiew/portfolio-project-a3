@@ -34,7 +34,7 @@ const ToolsSection = async () => {
         <div className="mt-10 rounded-xl border border-borderline bg-a3Navy p-6">
           <p className="text-justify text-secondaryText">
             <b>One tool solved part of the problem, what about the rest?</b>{' '}
-            <br></br>A3 team connects the dots — consultation, integrations,
+            <br></br>A3 team connects the dots — consultation, integration,
             automation and custom solution across your operations.
           </p>
           <a
