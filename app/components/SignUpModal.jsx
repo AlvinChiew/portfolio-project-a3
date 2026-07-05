@@ -17,11 +17,21 @@ const SignUpModal = ({ isOpen, onClose }) => {
     e.preventDefault();
     setError('');
 
+    const companySize = e.target.company_size.value.trim();
+
+    if (!/^\d+$/.test(companySize) || Number(companySize) < 1) {
+      setError('Company size must be a whole number.');
+      return;
+    }
+
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
+      job_role: e.target.job_role.value,
       company: e.target.company.value,
+      company_size: companySize,
       industry: e.target.industry.value,
+      sourced_from: e.target.sourced_from.value,
     };
 
     const response = await fetch('/api/signup', {
@@ -32,12 +42,13 @@ const SignUpModal = ({ isOpen, onClose }) => {
       body: JSON.stringify(data),
     });
 
+    const result = await response.json();
+
     if (response.status === 200) {
       setSubmitted(true);
       return;
     }
 
-    const result = await response.json();
     setError(result.error || 'Something went wrong. Please try again.');
   };
 
@@ -61,7 +72,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="signup-modal-title"
-        className="relative w-full max-w-md rounded-lg border border-borderline bg-secondaryBackdrop p-6 shadow-xl"
+        className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-lg border border-borderline bg-secondaryBackdrop p-6 shadow-xl"
       >
         <button
           type="button"
@@ -81,7 +92,8 @@ const SignUpModal = ({ isOpen, onClose }) => {
 
         {submitted ? (
           <p className="text-sm text-green-300">
-            Thanks — free activation code is on its way. Check your inbox soon.
+            Thanks — your free activation code is on its way. Check your inbox
+            soon.
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
@@ -119,6 +131,22 @@ const SignUpModal = ({ isOpen, onClose }) => {
             </div>
             <div className="mb-6">
               <label
+                htmlFor="signup-job-role"
+                className="mb-2 block text-sm font-medium text-white"
+              >
+                Job role
+              </label>
+              <input
+                name="job_role"
+                type="text"
+                id="signup-job-role"
+                required
+                className="block w-full rounded-lg border border-borderline bg-formInput p-2.5 text-sm text-gray-100 placeholder-formPlaceholder"
+                placeholder="e.g. Software Engineer"
+              />
+            </div>
+            <div className="mb-6">
+              <label
                 htmlFor="signup-company"
                 className="mb-2 block text-sm font-medium text-white"
               >
@@ -135,6 +163,25 @@ const SignUpModal = ({ isOpen, onClose }) => {
             </div>
             <div className="mb-6">
               <label
+                htmlFor="signup-company-size"
+                className="mb-2 block text-sm font-medium text-white"
+              >
+                Company size
+              </label>
+              <input
+                name="company_size"
+                type="number"
+                id="signup-company-size"
+                min="1"
+                step="1"
+                inputMode="numeric"
+                required
+                className="block w-full rounded-lg border border-borderline bg-formInput p-2.5 text-sm text-gray-100 placeholder-formPlaceholder [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                placeholder="e.g. 10"
+              />
+            </div>
+            <div className="mb-6">
+              <label
                 htmlFor="signup-industry"
                 className="mb-2 block text-sm font-medium text-white"
               >
@@ -147,6 +194,22 @@ const SignUpModal = ({ isOpen, onClose }) => {
                 required
                 className="block w-full rounded-lg border border-borderline bg-formInput p-2.5 text-sm text-gray-100 placeholder-formPlaceholder"
                 placeholder="e.g. Real estate, SaaS, Retail"
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="signup-sourced-from"
+                className="mb-2 block text-sm font-medium text-white"
+              >
+                How did you know us?
+              </label>
+              <input
+                name="sourced_from"
+                type="text"
+                id="signup-sourced-from"
+                required
+                className="block w-full rounded-lg border border-borderline bg-formInput p-2.5 text-sm text-gray-100 placeholder-formPlaceholder"
+                placeholder="e.g. YouTube, LinkedIn"
               />
             </div>
             {error && <p className="mb-4 text-sm text-red-400">{error}</p>}

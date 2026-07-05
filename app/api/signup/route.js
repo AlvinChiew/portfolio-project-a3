@@ -13,12 +13,20 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-async function issueActivationCode(email) {
+function isValidCompanySize(value) {
+  const trimmed = value?.trim();
+  if (!trimmed || !/^\d+$/.test(trimmed)) {
+    return false;
+  }
+  return Number(trimmed) >= 1;
+}
+
+async function issueActivationCode(profile) {
   const issueUrl = process.env.ACTIVATION_ISSUE_URL;
   const issueApiKey = process.env.ACTIVATION_ISSUE_API_KEY;
 
   if (!issueUrl || !issueApiKey) {
-    return null;
+    throw new Error('Activation service is not configured.');
   }
 
   const response = await fetch(issueUrl, {
@@ -27,11 +35,20 @@ async function issueActivationCode(email) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${issueApiKey}`,
     },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({
+      name: profile.name,
+      job_role: profile.job_role,
+      company: profile.company,
+      company_size: profile.company_size,
+      industry: profile.industry,
+      email: profile.email,
+      sourced_from: profile.sourced_from,
+    }),
   });
 
   if (!response.ok) {
-    throw new Error('Failed to issue activation code');
+    const errorBody = await response.json().catch(() => null);
+    throw new Error(errorBody?.error || 'Failed to issue activation code');
   }
 
   const data = await response.json();
@@ -41,13 +58,24 @@ async function issueActivationCode(email) {
 export async function POST(req) {
   const fromEmail = process.env.FROM_EMAIL;
   const resend = getResend();
-  const { name, email, company, industry } = await req.json();
+  const {
+    name,
+    email,
+    job_role,
+    company,
+    company_size,
+    industry,
+    sourced_from,
+  } = await req.json();
 
   if (
     !name?.trim() ||
     !email?.trim() ||
+    !job_role?.trim() ||
     !company?.trim() ||
-    !industry?.trim()
+    !company_size?.trim() ||
+    !industry?.trim() ||
+    !sourced_from?.trim()
   ) {
     return NextResponse.json(
       { error: 'All fields are required.' },
@@ -62,99 +90,103 @@ export async function POST(req) {
     );
   }
 
-  if (!resend || !fromEmail) {
+  if (!isValidCompanySize(company_size)) {
     return NextResponse.json(
-      { error: 'Email service is not configured.' },
-      { status: 500 },
+      { error: 'Company size must be a whole number.' },
+      { status: 400 },
     );
   }
+
+  const profile = {
+    name: name.trim(),
+    email: email.trim(),
+    job_role: job_role.trim(),
+    company: company.trim(),
+    company_size: company_size.trim(),
+    industry: industry.trim(),
+    sourced_from: sourced_from.trim(),
+  };
 
   let activationCode = null;
 
   try {
-    activationCode = await issueActivationCode(email.trim());
+    activationCode = await issueActivationCode(profile);
   } catch (error) {
     console.error('Activation issue failed:', error);
+    return NextResponse.json(
+      {
+        error:
+          error.message === 'Activation service is not configured.'
+            ? 'Activation service is not configured.'
+            : 'Unable to issue activation code. Please try again later.',
+      },
+      { status: 502 },
+    );
+  }
+
+  if (!activationCode) {
     return NextResponse.json(
       { error: 'Unable to issue activation code. Please try again later.' },
       { status: 502 },
     );
   }
 
-  try {
-    await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail],
-      subject: `[Project A3] New activation sign-up — ${name}`,
-      react: (
-        <>
-          <h1>New activation sign-up</h1>
-          <p>
-            <strong>Name:</strong> {name}
-          </p>
-          <p>
-            <strong>Email:</strong> {email}
-          </p>
-          <p>
-            <strong>Company:</strong> {company}
-          </p>
-          <p>
-            <strong>Industry:</strong> {industry}
-          </p>
-          {activationCode ? (
+  if (resend && fromEmail) {
+    try {
+      await resend.emails.send({
+        from: fromEmail,
+        to: [fromEmail],
+        subject: `[Project A3] New activation sign-up — ${profile.name}`,
+        react: (
+          <>
+            <h1>New activation sign-up</h1>
+            <p>
+              <strong>Name:</strong> {profile.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {profile.email}
+            </p>
+            <p>
+              <strong>Job role:</strong> {profile.job_role}
+            </p>
+            <p>
+              <strong>Company:</strong> {profile.company}
+            </p>
+            <p>
+              <strong>Company size:</strong> {profile.company_size}
+            </p>
+            <p>
+              <strong>Industry:</strong> {profile.industry}
+            </p>
+            <p>
+              <strong>How they heard about us:</strong> {profile.sourced_from}
+            </p>
             <p>
               <strong>Issued code:</strong> {activationCode}
             </p>
-          ) : (
-            <p>
-              Phase A: issue activation code manually until validator is
-              deployed.
-            </p>
-          )}
-        </>
-      ),
-    });
+          </>
+        ),
+      });
 
-    if (activationCode) {
       await resend.emails.send({
         from: fromEmail,
-        to: [email.trim()],
+        to: [profile.email],
         subject: 'Your Project A3 activation code',
         react: (
           <>
             <h1>Free Activation Code</h1>
-            <p>Thanks for signing up for Auto Email.</p>
+            <p>Thanks for signing up for Project A3.</p>
             <p>
               Activation code: <strong>{activationCode}</strong>
             </p>
-            <p>Enter this code in the app to unlock full access.</p>
+            <p>Enter this code in the any tool to unlock full access.</p>
           </>
         ),
       });
-    } else {
-      await resend.emails.send({
-        from: fromEmail,
-        to: [email.trim()],
-        subject: 'Project A3 — activation code on the way',
-        react: (
-          <>
-            <h1>Thanks for signing up</h1>
-            <p>
-              Thanks for signing up for Auto Email — free activation code is on
-              its way. We&apos;ll email you shortly with your code.
-            </p>
-            <p>Made Simple, For Business.</p>
-          </>
-        ),
-      });
+    } catch (error) {
+      console.error('Sign-up email failed:', error);
     }
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error('Sign-up email failed:', error);
-    return NextResponse.json(
-      { error: 'Unable to send confirmation email.' },
-      { status: 500 },
-    );
   }
+
+  return NextResponse.json({ success: true });
 }
