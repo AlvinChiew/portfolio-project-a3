@@ -30,12 +30,12 @@ const IntroSection = () => {
           </ul>
           <div className="flex flex-wrap gap-4">
             <GetActivationCodeButton />
-            <Link
+            {/* <Link
               href="#tools"
               className="rounded-full border border-borderline px-6 py-3 text-white hover:border-a3Accent hover:text-a3Accent"
             >
               Explore tools
-            </Link>
+            </Link> */}
             <Link
               href="https://feedback-project-a3.alvinchiew.com/"
               target="_blank"
