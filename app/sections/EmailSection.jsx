@@ -5,6 +5,8 @@ import LinkedinIcon from '../../public/linkedin-icon.svg';
 import InstagramIcon from '../../public/instagram-icon.svg';
 import MessengerIcon from '../../public/messenger-icon.svg';
 import MailIcon from '../../public/mail-icon.svg';
+import DiscordIcon from '../../public/discord-icon.svg';
+import PortfolioIcon from '../../public/portfolio-icon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -25,9 +27,14 @@ const icons = [
     src: InstagramIcon,
   },
   {
-    name: 'Messenger',
-    href: 'https://messenger.com/t/alvinjj08/',
-    src: MessengerIcon,
+    name: 'Discord',
+    href: 'https://discord.gg/4am6RhC2mx',
+    src: DiscordIcon,
+  },
+  {
+    name: 'Portfolio',
+    href: 'https://alvinchiew.com',
+    src: PortfolioIcon,
   },
   {
     name: 'Mail',
@@ -84,12 +91,15 @@ const EmailSection = () => {
         <div className="socials flex flex-row gap-2">
           {icons.map(({ name, href, src }, index) => (
             <Link href={href} target="_blank" key={index}>
-              <Image
-                className="hover:animate-ping-custom rounded-full transition duration-500"
-                src={src}
-                alt={name}
-                width={40}
-              />
+              <div className="flex items-center justify-center h-12 w-12">
+                <Image
+                  className="hover:animate-ping-custom rounded-full transition duration-500"
+                  src={src}
+                  alt={name}
+                  width={40}
+                  height={40}
+                />
+              </div>
             </Link>
           ))}
         </div>

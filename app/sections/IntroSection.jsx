@@ -42,7 +42,15 @@ const IntroSection = () => {
               rel="noopener noreferrer"
               className="rounded-full border border-borderline px-6 py-3 text-white hover:border-a3Accent hover:text-a3Accent"
             >
-              Bugs & feature requests
+              Bugs & Feature Requests
+            </Link>
+            <Link
+              href="https://discord.gg/4am6RhC2mx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-borderline px-6 py-3 text-white hover:border-a3Accent hover:text-a3Accent"
+            >
+              Join Community
             </Link>
           </div>
         </div>
