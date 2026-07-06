@@ -37,7 +37,7 @@ const IntroSection = () => {
               Explore tools
             </Link>
             <Link
-              href="https://project-a3-board.userjot.com"
+              href="https://feedback-project-a3.alvinchiew.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-borderline px-6 py-3 text-white hover:border-a3Accent hover:text-a3Accent"
