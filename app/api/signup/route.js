@@ -48,7 +48,11 @@ async function issueActivationCode(profile) {
 
   if (!response.ok) {
     const errorBody = await response.json().catch(() => null);
-    throw new Error(errorBody?.error || 'Failed to issue activation code');
+    const error = new Error(
+      errorBody?.error || 'Failed to issue activation code',
+    );
+    error.status = response.status;
+    throw error;
   }
 
   const data = await response.json();
@@ -113,6 +117,14 @@ export async function POST(req) {
     activationCode = await issueActivationCode(profile);
   } catch (error) {
     console.error('Activation issue failed:', error);
+
+    if (error.status >= 400 && error.status < 500) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.status },
+      );
+    }
+
     return NextResponse.json(
       {
         error:
