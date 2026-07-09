@@ -21,9 +21,22 @@ function isValidCompanySize(value) {
   return Number(trimmed) >= 1;
 }
 
+function parseActivationErrorBody(rawBody) {
+  if (!rawBody?.trim()) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(rawBody);
+    return parsed?.error ?? null;
+  } catch {
+    return null;
+  }
+}
+
 async function issueActivationCode(profile) {
-  const issueUrl = process.env.ACTIVATION_ISSUE_URL;
-  const issueApiKey = process.env.ACTIVATION_ISSUE_API_KEY;
+  const issueUrl = process.env.ACTIVATION_ISSUE_URL?.trim();
+  const issueApiKey = process.env.ACTIVATION_ISSUE_API_KEY?.trim();
 
   if (!issueUrl || !issueApiKey) {
     throw new Error('Activation service is not configured.');
@@ -33,6 +46,7 @@ async function issueActivationCode(profile) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
       Authorization: `Bearer ${issueApiKey}`,
     },
     body: JSON.stringify({
@@ -47,11 +61,12 @@ async function issueActivationCode(profile) {
   });
 
   if (!response.ok) {
-    const errorBody = await response.json().catch(() => null);
-    const error = new Error(
-      errorBody?.error || 'Failed to issue activation code',
-    );
+    const rawBody = await response.text();
+    const parsedError = parseActivationErrorBody(rawBody);
+    const error = new Error(parsedError || 'Failed to issue activation code');
     error.status = response.status;
+    error.rawBody = rawBody.slice(0, 500);
+    error.contentType = response.headers.get('content-type');
     throw error;
   }
 
@@ -117,7 +132,19 @@ export async function POST(req) {
   try {
     activationCode = await issueActivationCode(profile);
   } catch (error) {
-    console.error('Activation issue failed:', error);
+    console.error('Activation issue failed:', {
+      status: error.status,
+      message: error.message,
+      contentType: error.contentType,
+      bodyPreview: error.rawBody,
+      issueUrlHost: process.env.ACTIVATION_ISSUE_URL
+        ? new URL(process.env.ACTIVATION_ISSUE_URL.trim()).host
+        : null,
+      hint:
+        error.status === 403
+          ? 'Cloudflare likely blocked Vercel server-side egress. Allow POST /api/v1/issue from Vercel IPs or skip WAF/Bot Fight for authenticated issue requests.'
+          : undefined,
+    });
 
     if (error.status >= 400 && error.status < 500) {
       return NextResponse.json(
