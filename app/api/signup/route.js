@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import {
+  BLOCKED_SIGNUP_EMAIL_MESSAGE,
+  isBlockedSignupEmail,
+  isHoneypotTriggered,
+} from '../../lib/signupValidation';
 
 function getResend() {
   const apiKey = process.env.RESEND_API_KEY;
@@ -66,7 +71,15 @@ export async function POST(req) {
     company_size,
     industry,
     sourced_from,
+    website,
   } = await req.json();
+
+  if (isHoneypotTriggered(website)) {
+    return NextResponse.json(
+      { error: 'Something went wrong. Please try again.' },
+      { status: 400 },
+    );
+  }
 
   if (
     !name?.trim() ||
@@ -86,6 +99,13 @@ export async function POST(req) {
   if (!isValidEmail(email)) {
     return NextResponse.json(
       { error: 'Please enter a valid business email.' },
+      { status: 400 },
+    );
+  }
+
+  if (isBlockedSignupEmail(email)) {
+    return NextResponse.json(
+      { error: BLOCKED_SIGNUP_EMAIL_MESSAGE },
       { status: 400 },
     );
   }

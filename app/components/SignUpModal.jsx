@@ -1,6 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
+import {
+  BLOCKED_SIGNUP_EMAIL_MESSAGE,
+  isBlockedSignupEmail,
+} from '../lib/signupValidation';
 
 const SignUpModal = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -18,15 +22,22 @@ const SignUpModal = ({ isOpen, onClose }) => {
     setError('');
 
     const companySize = e.target.company_size.value.trim();
+    const email = e.target.email.value.trim();
 
     if (!/^\d+$/.test(companySize) || Number(companySize) < 1) {
       setError('Company size must be a whole number.');
       return;
     }
 
+    if (isBlockedSignupEmail(email)) {
+      setError(BLOCKED_SIGNUP_EMAIL_MESSAGE);
+      return;
+    }
+
     const data = {
       name: e.target.name.value,
-      email: e.target.email.value,
+      email,
+      website: e.target.website.value,
       job_role: e.target.job_role.value,
       company: e.target.company.value,
       company_size: companySize,
@@ -97,6 +108,19 @@ const SignUpModal = ({ isOpen, onClose }) => {
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
+            <div
+              className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+              aria-hidden="true"
+            >
+              <label htmlFor="signup-website">Website</label>
+              <input
+                name="website"
+                type="text"
+                id="signup-website"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
             <div className="mb-6">
               <label
                 htmlFor="signup-name"
