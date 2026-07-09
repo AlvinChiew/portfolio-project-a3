@@ -61,6 +61,7 @@ async function issueActivationCode(profile) {
 
 export async function POST(req) {
   const fromEmail = process.env.FROM_EMAIL;
+  const adminEmail = process.env.ADMIN_EMAIL;
   const resend = getResend();
   const {
     name,
@@ -143,11 +144,11 @@ export async function POST(req) {
     );
   }
 
-  if (resend && fromEmail) {
+  if (resend && fromEmail && adminEmail) {
     try {
       await resend.emails.send({
         from: fromEmail,
-        to: [fromEmail],
+        to: [adminEmail],
         subject: `[Project A3] New activation sign-up — ${profile.name}`,
         react: (
           <>
