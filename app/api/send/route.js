@@ -1,12 +1,13 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 export async function POST(req) {
   const fromEmail = process.env.FROM_EMAIL;
+  const adminEmail = process.env.ADMIN_EMAIL;
 
   if (!process.env.RESEND_API_KEY || !fromEmail) {
     return NextResponse.json(
-      { error: "Email service is not configured." },
+      { error: 'Email service is not configured.' },
       { status: 500 },
     );
   }
@@ -15,7 +16,8 @@ export async function POST(req) {
   const { email, subject, message } = await req.json();
   const body = {
     from: fromEmail,
-    to: [fromEmail, email],
+    to: [email],
+    bcc: [adminEmail],
     subject: subject,
     react: (
       <>
