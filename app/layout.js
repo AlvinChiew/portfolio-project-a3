@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
   title: 'Project A3 | A3计划',
   description:
-    'Alvin • AI • Automation — Made Simple, For Business. Free desktop tools for small business.',
+    'Alvin • AI • Automation — Made Simple, For Business. Free tools for small business.',
 };
 
 export default function RootLayout({ children }) {

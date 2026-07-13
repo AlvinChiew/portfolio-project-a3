@@ -1,9 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import GithubIcon from '../../public/github-icon.svg';
-import LinkedinIcon from '../../public/linkedin-icon.svg';
-import InstagramIcon from '../../public/instagram-icon.svg';
-import MessengerIcon from '../../public/messenger-icon.svg';
 import MailIcon from '../../public/mail-icon.svg';
 import DiscordIcon from '../../public/discord-icon.svg';
 import PortfolioIcon from '../../public/portfolio-icon.svg';
@@ -12,34 +8,19 @@ import Image from 'next/image';
 
 const icons = [
   {
-    name: 'Github',
-    href: 'https://github.com/AlvinChiew/',
-    src: GithubIcon,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/alvinchiew/',
-    src: LinkedinIcon,
-  },
-  {
-    name: 'Instagram',
-    href: 'https://instagram.com/alvinchiew08/',
-    src: InstagramIcon,
-  },
-  {
     name: 'Discord',
     href: 'https://discord.gg/4am6RhC2mx',
     src: DiscordIcon,
   },
   {
-    name: 'Portfolio',
-    href: 'https://alvinchiew.com',
-    src: PortfolioIcon,
-  },
-  {
     name: 'Mail',
     href: 'mailto:contact@alvinchiew.com',
     src: MailIcon,
+  },
+  {
+    name: 'Portfolio',
+    href: 'https://alvinchiew.com',
+    src: PortfolioIcon,
   },
 ];
 
