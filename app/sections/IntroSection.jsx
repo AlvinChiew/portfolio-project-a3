@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import GetActivationCodeButton from '../components/GetActivationCodeButton';
+import ChannelsButton from '../components/ChannelsButton';
 
 const IntroSection = () => {
   return (
@@ -44,14 +45,7 @@ const IntroSection = () => {
             >
               Bugs & Feature Requests
             </Link>
-            <Link
-              href="https://discord.gg/4am6RhC2mx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-borderline px-6 py-3 text-white hover:border-a3Accent hover:text-a3Accent"
-            >
-              Join Community
-            </Link>
+            <ChannelsButton />
           </div>
         </div>
         <div className="col-span-5 my-6 place-self-center sm:place-self-start md:place-self-center lg:my-0">
