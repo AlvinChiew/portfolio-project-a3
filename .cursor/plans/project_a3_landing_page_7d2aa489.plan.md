@@ -154,12 +154,12 @@ Copy [`ep01-auto-email-follow-up/assets/logo.svg`](D:/git_repos/project-a3/ep01-
 
 7. Add `.env.local.example`:
 
-   | Variable                   | Purpose                                         |
-   | -------------------------- | ----------------------------------------------- |
-   | `RESEND_API_KEY`           | Resend API key (contact + sign-up emails)       |
-   | `FROM_EMAIL`               | Verified sender (e.g. `contact@alvinchiew.com`) |
-   | `ACTIVATION_ISSUE_URL`     | _(Phase B)_ Validator `POST /api/v1/issue` URL  |
-   | `ACTIVATION_ISSUE_API_KEY` | _(Phase B)_ Bearer token for validator          |
+   | Variable                   | Purpose                                                    |
+   | -------------------------- | ---------------------------------------------------------- |
+   | `RESEND_API_KEY`           | Resend API key (contact + sign-up emails)                  |
+   | `FROM_EMAIL`               | Verified sender (e.g. `contact.project.a3@alvinchiew.com`) |
+   | `ACTIVATION_ISSUE_URL`     | _(Phase B)_ Validator `POST /api/v1/issue` URL             |
+   | `ACTIVATION_ISSUE_API_KEY` | _(Phase B)_ Bearer token for validator                     |
 
 **Checkpoint:** `npm run dev` — page matches portfolio dark theme; Contact form submits to `/api/send` when env vars are set.
 

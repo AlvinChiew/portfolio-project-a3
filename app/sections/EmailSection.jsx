@@ -14,7 +14,7 @@ const icons = [
   },
   {
     name: 'Mail',
-    href: 'mailto:contact@alvinchiew.com',
+    href: 'mailto:contact.project.a3@alvinchiew.com',
     src: MailIcon,
   },
   {

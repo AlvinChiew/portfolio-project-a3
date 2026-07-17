@@ -38,7 +38,7 @@ const ToolsSection = async () => {
             automation and custom solution across your operations.
           </p>
           <a
-            href="mailto:contact@alvinchiew.com?subject=Business%20inquiry"
+            href="mailto:contact.project.a3@alvinchiew.com?subject=Business%20inquiry"
             className="mt-4 inline-block text-a3Accent hover:underline"
           >
             Contact the A3 team →

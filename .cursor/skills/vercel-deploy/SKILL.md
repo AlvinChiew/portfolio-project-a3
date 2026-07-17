@@ -7,14 +7,14 @@ description: Deploys the portfolio-project-a3 Next.js app to Vercel, including e
 
 ## Project context
 
-| Item | Value |
-|------|-------|
-| Framework | Next.js 14 (App Router) |
-| Repo | `git@github.com:AlvinChiew/portfolio-project-a3.git` |
-| Production URL | https://project-a3.alvinchiew.com |
-| Build command | `npm run build` (default) |
-| Output | Next.js default (no `vercel.json` required) |
-| API routes | `/api/send`, `/api/signup` |
+| Item           | Value                                                |
+| -------------- | ---------------------------------------------------- |
+| Framework      | Next.js 14 (App Router)                              |
+| Repo           | `git@github.com:AlvinChiew/portfolio-project-a3.git` |
+| Production URL | https://project-a3.alvinchiew.com                    |
+| Build command  | `npm run build` (default)                            |
+| Output         | Next.js default (no `vercel.json` required)          |
+| API routes     | `/api/send`, `/api/signup`                           |
 
 ## Pre-deploy checklist
 
@@ -32,12 +32,12 @@ Deploy Progress:
 
 Set in **Vercel → Project → Settings → Environment Variables** for Production (and Preview if forms should work on preview URLs).
 
-| Variable | Required | Purpose |
-|----------|----------|---------|
-| `RESEND_API_KEY` | Yes | Resend API for contact + sign-up emails |
-| `FROM_EMAIL` | Yes | Verified sender in Resend (e.g. `contact@alvinchiew.com`) |
-| `ACTIVATION_ISSUE_URL` | No | Phase B — activation validator endpoint |
-| `ACTIVATION_ISSUE_API_KEY` | No | Bearer token for activation validator |
+| Variable                   | Required | Purpose                                                              |
+| -------------------------- | -------- | -------------------------------------------------------------------- |
+| `RESEND_API_KEY`           | Yes      | Resend API for contact + sign-up emails                              |
+| `FROM_EMAIL`               | Yes      | Verified sender in Resend (e.g. `contact.project.a3@alvinchiew.com`) |
+| `ACTIVATION_ISSUE_URL`     | No       | Phase B — activation validator endpoint                              |
+| `ACTIVATION_ISSUE_API_KEY` | No       | Bearer token for activation validator                                |
 
 `FROM_EMAIL` must be a domain verified in [Resend](https://resend.com/domains). Without `RESEND_API_KEY` and `FROM_EMAIL`, `/api/send` and `/api/signup` return 500.
 
@@ -103,13 +103,13 @@ After deploy completes:
 
 ## Troubleshooting
 
-| Symptom | Fix |
-|---------|-----|
-| Build fails on Vercel | Read build log; reproduce with `npm run build` locally |
-| `Email service is not configured` | Set `RESEND_API_KEY` and `FROM_EMAIL` in Vercel env |
-| Resend 403 / domain error | Verify sending domain in Resend; `FROM_EMAIL` must use that domain |
-| Preview URL forms fail | Add env vars to **Preview** environment in Vercel |
-| Stale deploy | Redeploy from Vercel dashboard or `vercel --prod` |
+| Symptom                           | Fix                                                                |
+| --------------------------------- | ------------------------------------------------------------------ |
+| Build fails on Vercel             | Read build log; reproduce with `npm run build` locally             |
+| `Email service is not configured` | Set `RESEND_API_KEY` and `FROM_EMAIL` in Vercel env                |
+| Resend 403 / domain error         | Verify sending domain in Resend; `FROM_EMAIL` must use that domain |
+| Preview URL forms fail            | Add env vars to **Preview** environment in Vercel                  |
+| Stale deploy                      | Redeploy from Vercel dashboard or `vercel --prod`                  |
 
 ## What not to do
 

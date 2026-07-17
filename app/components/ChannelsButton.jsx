@@ -6,39 +6,50 @@ import {
   FaLinkedin,
   FaFacebook,
   FaDiscord,
+  FaTiktok,
 } from 'react-icons/fa';
-import { SiXiaohongshu } from 'react-icons/si';
+import { SiXiaohongshu, SiTiktok } from 'react-icons/si';
 
 const channels = [
-  {
-    name: 'YouTube',
-    href: 'https://www.youtube.com/@project-a3',
-    Icon: FaYoutube,
-  },
-  {
-    name: 'RedNote',
-    href: 'https://www.xiaohongshu.com/user/profile/project-a3',
-    Icon: SiXiaohongshu,
-  },
-  {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/projecta3',
-    Icon: FaInstagram,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/project-a3',
-    Icon: FaLinkedin,
-  },
-  {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/projecta3',
-    Icon: FaFacebook,
-  },
   {
     name: 'Discord',
     href: 'https://discord.gg/4am6RhC2mx',
     Icon: FaDiscord,
+  },
+  {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@project-a-cube',
+    Icon: FaYoutube,
+  },
+  {
+    name: 'RedNote',
+    href: 'https://www.rednote.com/user/profile/6a585d3f000000000d035c00',
+    Icon: SiXiaohongshu,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/project.a.cube/',
+    Icon: FaInstagram,
+  },
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/project.a.cube',
+    Icon: FaFacebook,
+  },
+  {
+    name: 'TikTok',
+    href: 'https://www.tiktok.com/@project.a.cube',
+    Icon: FaTiktok,
+  },
+  {
+    name: 'Douyin',
+    href: 'https://www.douyin.com/user/MS4wLjABAAAA8oR1j_p-MdcfLnIhgM1KiT5XqbyK3EU1djDkkSKvFyGt_V7S9Y1VgSU5rM5OwL5D',
+    Icon: SiTiktok,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/project-a-cube',
+    Icon: FaLinkedin,
   },
 ];
 
