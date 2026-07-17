@@ -9,7 +9,7 @@ export const tools = [
     githubUrl:
       'https://github.com/AlvinChiew/project-a3/blob/main/ep01-auto-email/README.md',
     releasesUrl:
-      'https://github.com/AlvinChiew/project-a3/releases/download/latest/auto-email_x64-setup.exe',
+      'https://github.com/AlvinChiew/project-a3/releases/download/latest/ep01-auto-email_x64-setup.exe',
     videoUrl: null,
   },
   {
