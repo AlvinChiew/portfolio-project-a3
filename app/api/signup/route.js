@@ -21,6 +21,20 @@ function isValidCompanySize(value) {
   return Number(trimmed) >= 1;
 }
 
+function parsePhoneNumber(value) {
+  if (typeof value === 'number') {
+    return Number.isInteger(value) && value >= 1 ? value : null;
+  }
+
+  const trimmed = String(value ?? '').trim();
+  if (!trimmed || !/^\d+$/.test(trimmed)) {
+    return null;
+  }
+
+  const parsed = Number(trimmed);
+  return Number.isInteger(parsed) && parsed >= 1 ? parsed : null;
+}
+
 function parseActivationErrorBody(rawBody) {
   if (!rawBody?.trim()) {
     return null;
@@ -56,6 +70,7 @@ async function issueActivationCode(profile) {
       company_size: profile.company_size,
       industry: profile.industry,
       email: profile.email,
+      phone_number: profile.phone_number,
       sourced_from: profile.sourced_from,
     }),
   });
@@ -81,6 +96,7 @@ export async function POST(req) {
   const {
     name,
     email,
+    phone_number,
     job_role,
     company,
     company_size,
@@ -91,6 +107,8 @@ export async function POST(req) {
   if (
     !name?.trim() ||
     !email?.trim() ||
+    phone_number == null ||
+    phone_number === '' ||
     !job_role?.trim() ||
     !company?.trim() ||
     !company_size?.trim() ||
@@ -117,9 +135,18 @@ export async function POST(req) {
     );
   }
 
+  const parsedPhoneNumber = parsePhoneNumber(phone_number);
+  if (parsedPhoneNumber == null) {
+    return NextResponse.json(
+      { error: 'Phone number must be a whole number.' },
+      { status: 400 },
+    );
+  }
+
   const profile = {
     name: name.trim(),
     email: email.trim(),
+    phone_number: parsedPhoneNumber,
     job_role: job_role.trim(),
     company: company.trim(),
     company_size: company_size.trim(),
@@ -185,6 +212,9 @@ export async function POST(req) {
             </p>
             <p>
               <strong>Email:</strong> {profile.email}
+            </p>
+            <p>
+              <strong>Phone number:</strong> {profile.phone_number}
             </p>
             <p>
               <strong>Job role:</strong> {profile.job_role}

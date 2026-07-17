@@ -18,15 +18,22 @@ const SignUpModal = ({ isOpen, onClose }) => {
     setError('');
 
     const companySize = e.target.company_size.value.trim();
+    const phoneNumber = e.target.phone_number.value.trim();
 
     if (!/^\d+$/.test(companySize) || Number(companySize) < 1) {
       setError('Company size must be a whole number.');
       return;
     }
 
+    if (!/^\d+$/.test(phoneNumber)) {
+      setError('Phone number must be a whole number.');
+      return;
+    }
+
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
+      phone_number: Number(phoneNumber),
       job_role: e.target.job_role.value,
       company: e.target.company.value,
       company_size: companySize,
@@ -127,6 +134,25 @@ const SignUpModal = ({ isOpen, onClose }) => {
                 required
                 className="block w-full rounded-lg border border-borderline bg-formInput p-2.5 text-sm text-gray-100 placeholder-formPlaceholder"
                 placeholder="you@company.com"
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="signup-phone"
+                className="mb-2 block text-sm font-medium text-white"
+              >
+                Phone number
+              </label>
+              <input
+                name="phone_number"
+                type="number"
+                id="signup-phone"
+                min="1"
+                step="1"
+                inputMode="numeric"
+                required
+                className="block w-full rounded-lg border border-borderline bg-formInput p-2.5 text-sm text-gray-100 placeholder-formPlaceholder [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                placeholder="e.g. 60123456789"
               />
             </div>
             <div className="mb-6">
