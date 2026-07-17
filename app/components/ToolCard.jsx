@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const ToolCard = ({
+  id,
   logo,
   name,
   description,
@@ -81,7 +82,14 @@ const ToolCard = ({
         )}
       </div>
       <div className="px-4 py-6 text-white">
-        <h5 className="mb-2 text-center text-xl font-semibold">{name}</h5>
+        <h5 className="mb-2 text-center text-xl font-semibold">
+          {name}
+          {id && (
+            <span className="m-2 align-middle text-xs font-medium uppercase tracking-wide text-a3Accent">
+              {id}
+            </span>
+          )}
+        </h5>
         <p className="text-secondaryText">{description}</p>
       </div>
     </div>

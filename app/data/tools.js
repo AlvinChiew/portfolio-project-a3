@@ -14,7 +14,7 @@ export const tools = [
   },
   {
     id: 'ep02',
-    name: 'Auto WhatsApp Follow Up',
+    name: 'Auto WhatsApp',
     status: 'coming-soon',
     description: 'Automated WhatsApp follow-up sequences for sales teams.',
     logo: null,
@@ -23,7 +23,7 @@ export const tools = [
   },
   {
     id: 'ep03',
-    name: 'AI Reply',
+    name: 'AI WhatsApp',
     status: 'coming-soon',
     description: 'AI-assisted customer reply suggestions for sales inquiries.',
     logo: null,
