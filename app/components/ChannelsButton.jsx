@@ -22,11 +22,6 @@ const channels = [
     Icon: FaYoutube,
   },
   {
-    name: 'RedNote',
-    href: 'https://www.rednote.com/user/profile/6a585d3f000000000d035c00',
-    Icon: SiXiaohongshu,
-  },
-  {
     name: 'Instagram',
     href: 'https://www.instagram.com/project.a.cube/',
     Icon: FaInstagram,
@@ -37,6 +32,16 @@ const channels = [
     Icon: FaFacebook,
   },
   {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/project-a-cube',
+    Icon: FaLinkedin,
+  },
+  {
+    name: 'RedNote',
+    href: 'https://www.rednote.com/user/profile/6a585d3f000000000d035c00',
+    Icon: SiXiaohongshu,
+  },
+  {
     name: 'TikTok',
     href: 'https://www.tiktok.com/@project.a.cube',
     Icon: FaTiktok,
@@ -45,11 +50,6 @@ const channels = [
     name: 'Douyin',
     href: 'https://www.douyin.com/user/MS4wLjABAAAA8oR1j_p-MdcfLnIhgM1KiT5XqbyK3EU1djDkkSKvFyGt_V7S9Y1VgSU5rM5OwL5D',
     Icon: SiTiktok,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/project-a-cube',
-    Icon: FaLinkedin,
   },
 ];
 
