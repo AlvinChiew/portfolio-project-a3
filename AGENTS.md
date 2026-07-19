@@ -4,15 +4,7 @@ Next.js landing site for Project A3, deployed to Vercel. Style consistently with
 
 Site: [project-a3.alvinchiew.com](https://project-a3.alvinchiew.com/)
 
-## Related repositories
-
-Prefer opening **`a3.code-workspace`** from sibling **`project-a3-private`** so agents see all three roots. Commits/PRs are **per repo**.
-
-| Repo | Role |
-| ---- | ---- |
-| **`project-a3-private`** | Private source: `free-tools/`, `internal-tools/` (e.g. activation-key-validator), skills (`a3-brand`, `build-lead-magnet`) |
-| **`project-a3`** (public) | User guides (`free-tools/`), Releases, `internal/releases-manifest.json` — **no `AGENTS.md`**; shipping rules live in `project-a3-private` |
-| **`portfolio-project-a3`** (this) | Marketing site, tool showcase, activation sign-up |
+Multi-root workspace and sibling-repo roles: see **`project-a3-private`** root `AGENTS.md`. Commits/PRs stay **per repo**.
 
 ## Scope (this repo only)
 
