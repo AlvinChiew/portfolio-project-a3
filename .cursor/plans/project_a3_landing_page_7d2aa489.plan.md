@@ -115,7 +115,7 @@ flowchart TB
 | Accent       | `#61e692` | CTAs, highlights (matches ep01 `logo.svg`)  |
 | Primary text | `#ffffff` | Headings on navy surfaces                   |
 
-Copy [`ep01-auto-email-follow-up/assets/logo.svg`](D:/git_repos/project-a3/ep01-auto-email-follow-up/assets/logo.svg) to `public/tools/auto-email-logo.png`. Note: `project-a3/assets/images/logo-brand.png` is referenced in brand skill but **missing from repo** — use `logo.svg` until master brand PNG is added.
+Copy [`free-tools/ep01-auto-email-follow-up/assets/logo.svg`](D:/git_repos/project-a3/free-tools/ep01-auto-email-follow-up/assets/logo.svg) to `public/tools/auto-email-logo.png`. Note: `project-a3/assets/images/logo-brand.png` is referenced in brand skill but **missing from repo** — use `logo.svg` until master brand PNG is added.
 
 ---
 
@@ -200,7 +200,7 @@ Copy [`ep01-auto-email-follow-up/assets/logo.svg`](D:/git_repos/project-a3/ep01-
 
 ### Tool 1: Auto Email (ep01) — available now
 
-From [`ep01-auto-email-follow-up/README.md`](D:/git_repos/project-a3/ep01-auto-email-follow-up/README.md):
+From [`free-tools/ep01-auto-email-follow-up/README.md`](D:/git_repos/project-a3/free-tools/ep01-auto-email-follow-up/README.md):
 
 | Field           | Value                                                                                 |
 | --------------- | ------------------------------------------------------------------------------------- |
@@ -209,7 +209,7 @@ From [`ep01-auto-email-follow-up/README.md`](D:/git_repos/project-a3/ep01-auto-e
 | **Tagline**     | Made Simple, For Business.                                                            |
 | **Description** | Lightweight desktop app for scheduling and sending email follow-up sequences          |
 | **Platform**    | Windows desktop (Tauri 2)                                                             |
-| **Logo**        | Copy `ep01-auto-email-follow-up/assets/logo.svg` → `public/tools/auto-email-logo.png` |
+| **Logo**        | Copy `free-tools/ep01-auto-email-follow-up/assets/logo.svg` → `public/tools/auto-email-logo.png` |
 
 **Feature bullets** (card body):
 
@@ -223,7 +223,7 @@ From [`ep01-auto-email-follow-up/README.md`](D:/git_repos/project-a3/ep01-auto-e
 
 | Link         | URL / approach                                                                                                                                                                                                                           |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Download** | Resolve from GitHub Releases API: `https://api.github.com/repos/alvinchiew/project-a3/releases/latest` → asset `Auto Email_1.0.0_x64-setup.exe` (per [`USER_GUIDE.md`](D:/git_repos/project-a3/ep01-auto-email-follow-up/USER_GUIDE.md)) |
+| **Download** | Resolve from GitHub Releases API: `https://api.github.com/repos/alvinchiew/project-a3/releases/latest` → asset `Auto Email_1.0.0_x64-setup.exe` (per [`USER_GUIDE.md`](D:/git_repos/project-a3/free-tools/ep01-auto-email-follow-up/USER_GUIDE.md)) |
 | **GitHub**   | `https://github.com/alvinchiew/project-a3`                                                                                                                                                                                               |
 | **Video**    | **Not in repo** — hide video overlay until URL provided; or placeholder `#` with tooltip "Coming soon"                                                                                                                                   |
 
@@ -276,7 +276,7 @@ Welcome to Auto Email — free for your business.
 Get free activation code in under a minute.
 ```
 
-**Form fields** (align with ep01 [`USER_GUIDE.md`](D:/git_repos/project-a3/ep01-auto-email-follow-up/USER_GUIDE.md) and validator plan):
+**Form fields** (align with ep01 [`USER_GUIDE.md`](D:/git_repos/project-a3/free-tools/ep01-auto-email-follow-up/USER_GUIDE.md) and validator plan):
 
 | Field          | Type  | Required                                     |
 | -------------- | ----- | -------------------------------------------- |
@@ -403,10 +403,10 @@ portfolio-project-a3/
 | ---------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------- |
 | **No video URL** for Auto Email                      | Video overlay missing   | Hide until URL provided; AGENTS.md field reserved                               |
 | **`logo-brand.png` missing**                         | Master A3 logo absent   | Use ep01 `logo.svg` for now                                                     |
-| **Validator not built**                              | No auto code generation | Phase A Resend interim; Phase B when `internal/activation-key-validator/` ships |
+| **Validator not built**                              | No auto code generation | Phase A Resend interim; Phase B when `internal-tools/activation-key-validator/` ships |
 | **GitHub Release may not exist**                     | Download link 404       | Fallback to GitHub repo Releases page; verify asset filename at deploy          |
 | **Industry field**                                   | No dropdown values      | Free text input                                                                 |
-| **`internal/landing-page/` in project-a3 AGENTS.md** | Stale reference         | Landing lives in `portfolio-project-a3` repo (this build)                       |
+| **`internal-tools/landing-page/` in project-a3 AGENTS.md** | Stale reference         | Landing lives in `portfolio-project-a3` repo (this build)                       |
 
 ---
 

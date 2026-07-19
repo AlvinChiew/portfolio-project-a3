@@ -7,7 +7,7 @@ export const tools = [
       'Lightweight desktop app for scheduling and sending email follow-up sequences.',
     logo: '/tools/auto-email-logo.svg',
     githubUrl:
-      'https://github.com/AlvinChiew/project-a3/blob/main/ep01-auto-email/README.md',
+      'https://github.com/AlvinChiew/project-a3/blob/main/free-tools/ep01-auto-email/README.md',
     releasesUrl:
       'https://github.com/AlvinChiew/project-a3/releases/download/latest/ep01-auto-email_x64-setup.exe',
     videoUrl: null,

@@ -20,8 +20,8 @@ Marketing and activation website for Project A3 (Next.js / Vercel).
 
 | Repo | Purpose |
 | ---- | ------- |
-| **`project-a3-private`** | Private source, backends, agent skills |
-| **[`project-a3`](https://github.com/alvinchiew/project-a3)** | Public user guides, Releases, releases manifest |
+| **`project-a3-private`** | Private source (`free-tools/`, `internal-tools/`), agent skills |
+| **[`project-a3`](https://github.com/alvinchiew/project-a3)** | Public user guides (`free-tools/`), Releases, `internal/releases-manifest.json` |
 | **`portfolio-project-a3`** (this) | This website |
 
 For multi-repo Cursor sessions, open `a3.code-workspace` from `project-a3-private`. Agent rules: [`AGENTS.md`](AGENTS.md).

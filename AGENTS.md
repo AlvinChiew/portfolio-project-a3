@@ -10,8 +10,8 @@ Prefer opening **`a3.code-workspace`** from sibling **`project-a3-private`** so 
 
 | Repo | Role |
 | ---- | ---- |
-| **`project-a3-private`** | Private source: tools, activation-key-validator, skills (`a3-brand`, `build-lead-magnet`) |
-| **`project-a3`** (public) | User guides, Releases, releases manifest |
+| **`project-a3-private`** | Private source: `free-tools/`, `internal-tools/` (e.g. activation-key-validator), skills (`a3-brand`, `build-lead-magnet`) |
+| **`project-a3`** (public) | User guides (`free-tools/`), Releases, `internal/releases-manifest.json` — **no `AGENTS.md`**; shipping rules live in `project-a3-private` |
 | **`portfolio-project-a3`** (this) | Marketing site, tool showcase, activation sign-up |
 
 ## Scope (this repo only)
@@ -21,6 +21,7 @@ Prefer opening **`a3.code-workspace`** from sibling **`project-a3-private`** so 
 - **Activation sign-up**: Name, business email, company, industry (and related fields). Form calls private `activation-key-validator` `POST /api/v1/issue` and shows `A3-XXXX-XXXX`. Do not reimplement the validator here.
 - Contact: business inquiry email form + channel links (align with private `Contacts.md` / `a3-brand` when multi-root).
 - Do not store free-tool source, releases manifest, or k3s configs here.
+- Do not add `AGENTS.md` (or private-repo maps) to public `project-a3`.
 
 ## Local skills
 
