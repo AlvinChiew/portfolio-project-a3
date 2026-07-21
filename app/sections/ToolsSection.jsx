@@ -18,6 +18,10 @@ const ToolsSection = async () => {
     (tool) => tool.status === 'available',
   );
 
+  const sortedTools = [...resolvedTools].sort((a, b) =>
+    b.id.localeCompare(a.id),
+  );
+
   return (
     <section id="tools" className="py-16 md:py-20">
       <h2 className="mb-4 text-4xl font-bold text-white">Tools</h2>
@@ -26,7 +30,7 @@ const ToolsSection = async () => {
         device.
       </p>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {resolvedTools.map((tool) => (
+        {sortedTools.map((tool) => (
           <ToolCard key={tool.id} {...tool} />
         ))}
       </div>
