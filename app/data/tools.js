@@ -15,10 +15,14 @@ export const tools = [
   {
     id: 'ep02',
     name: 'Auto WhatsApp',
-    status: 'coming-soon',
-    description: 'Automated WhatsApp follow-up sequences for sales teams.',
-    logo: null,
-    githubUrl: null,
+    status: 'available',
+    description:
+      'Lightweight desktop app for scheduling and sending WhatsApp follow-up sequences.',
+    logo: '/tools/auto-whatsapp-logo.svg',
+    githubUrl:
+      'https://github.com/AlvinChiew/project-a3/blob/main/free-tools/ep02-auto-whatsapp/README.md',
+    releasesUrl:
+      'https://github.com/AlvinChiew/project-a3/releases/download/latest/ep02-auto-whatsapp_x64-setup.exe',
     videoUrl: null,
   },
   {

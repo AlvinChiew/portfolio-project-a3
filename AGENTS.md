@@ -9,7 +9,7 @@ Multi-root workspace and sibling-repo roles: see **`project-a3-private`** root `
 ## Scope (this repo only)
 
 - Project A3 introduction and bilingual brand tone (tokens/copy details: private `a3-brand` skill when working multi-root).
-- Tools showcase: description, download link, video link — downloads point at public `project-a3` Releases.
+- Tools showcase: `app/data/tools.js` (description, download/releases URL, video, logo under `public/tools/`). When a free tool ships installers, sync the matching row from public `project-a3/internal/releases-manifest.json` (`status: 'available'`, installer URL → `releasesUrl`) — `create-free-tool` Step 5.
 - **Activation sign-up**: Name, business email, company, industry (and related fields). Form calls private `activation-key-validator` `POST /api/v1/issue` and shows `A3-XXXX-XXXX`. Do not reimplement the validator here.
 - Contact: business inquiry email form + channel links (align with private `Contacts.md` / `a3-brand` when multi-root).
 - Do not store free-tool source, releases manifest, or k3s configs here.
